@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ struct Coordinate {
 
 SDL_Window* window = nullptr;
 SDL_Renderer* renderer = nullptr;
-vector<Coordinate> white_pixels; // Acts like a list to store coordinates
+vector<Coordinate> white_pixels;
 
 void initScreen() {
     SDL_Init(SDL_INIT_VIDEO);
@@ -22,8 +23,13 @@ void initScreen() {
 }
 
 void addCoordinate(int x, int y) {
-    // In bottom-left origin, (0,0) is at the bottom-left
-    white_pixels.push_back({ x / PIXEL_SIZE, y / PIXEL_SIZE }); // Add the new coordinate
+    // Ensure coordinates are within bounds for virtual coordinates
+    if (x >= 0 && x < VIRTUAL_SCREEN_SIZE && y >= 0 && y < VIRTUAL_SCREEN_SIZE) {
+        // Add the coordinate directly (no scaling needed)
+        white_pixels.push_back({ x, y });
+    } else {
+        std::cout << "Coordinate out of bounds: (" << x << ", " << y << ")" << std::endl;
+    }
 }
 
 void drawVirtualScreen() {
@@ -32,7 +38,7 @@ void drawVirtualScreen() {
 
     for (const auto& pixel : white_pixels) {
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        SDL_Rect rect = { pixel.x * PIXEL_SIZE, (VIRTUAL_SCREEN_SIZE - pixel.y - 1) * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE };
+        SDL_Rect rect = { pixel.x * PIXEL_SIZE, (VIRTUAL_SCREEN_SIZE - 1 - pixel.y) * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE };
         SDL_RenderFillRect(renderer, &rect);
     }
 
@@ -51,12 +57,11 @@ void cleanUp() {
     SDL_Quit();
 }
 
-int main() {
+void startScreen() {
     initScreen();
+}
 
-    // Adding white pixels using addCoordinate function
-    // addCoordinate(int x, int y);
-
+void run() {
     bool running = true;
     SDL_Event event;
 
@@ -68,5 +73,4 @@ int main() {
     }
 
     cleanUp();
-    return 0;
 }
