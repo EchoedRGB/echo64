@@ -1,14 +1,20 @@
+
 # Echo64 - 64x64 Virtual Screen Simulation
 
 ## Overview
 
-Echo64 is a simple SDL2-based virtual screen simulation that displays a 64x64 pixel grid. Users can add white pixels to the grid by clicking on the window, allowing for a basic drawing interface.
+Echo64 is a simple SDL2-based virtual screen simulation that displays a 64x64 pixel grid. Users can interactively add white pixels to the grid, allowing for a basic drawing interface and experimentation with pixel graphics.
 
 ## Features
 
 - **64x64 Pixel Grid**: Visualize a virtual screen where each pixel can be individually activated.
-- **Dynamic Pixel Addition**: Click on the screen to add white pixels.
-- **Grid Visualization**: A grid is drawn for reference, making it easy to see individual pixels.
+- **Dynamic Pixel Addition**: Easily add white pixels to the grid by specifying coordinates in the code.
+- **Grid Visualization**: A grid overlay is drawn for reference, making it easy to see individual pixels.
+
+## Project Structure
+
+- **screen.cpp**: Contains all screen initialization, rendering, and coordinate management functions.
+- **main.cpp**: Serves as the main entry point, where coordinates are added and the main event loop is run.
 
 ## Requirements
 
@@ -27,7 +33,7 @@ Echo64 is a simple SDL2-based virtual screen simulation that displays a 64x64 pi
 
 3. **Compile the code**:
    ```bash
-   g++ -o screen screen.cpp -lSDL2
+   g++ -o screen main.cpp -lSDL2
    ```
 
 ## Usage
@@ -37,7 +43,7 @@ Run the compiled program:
 ./screen
 ```
 
-Click on the window to add white pixels to the virtual screen.
+The program will open a 64x64 virtual grid window where predefined coordinates are highlighted. You can add new coordinates by calling `addCoordinate(x, y)` within `main.cpp`.
 
 ## Contributing
 
