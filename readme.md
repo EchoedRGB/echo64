@@ -1,58 +1,42 @@
+# 64x64 Virtual Screen Simulation
 
-# Echo64 - 64x64 Virtual Screen Simulation
+This project simulates a 64x64 virtual screen using SDL2. It allows you to add pixels to the screen, render them, and clear the screen.
+Features
 
-## Overview
+    Initialize an SDL window and renderer
+    Add pixels to the virtual screen
+    Render the current state of the screen
+    Clear the screen and reset pixels
 
-Echo64 is a simple SDL2-based virtual screen simulation that displays a 64x64 pixel grid. Users can interactively add white pixels to the grid, allowing for a basic drawing interface and experimentation with pixel graphics.
+# Requirements
 
-## Features
+    C++ Compiler
+    SDL2 library
 
-- **64x64 Pixel Grid**: Visualize a virtual screen where each pixel can be individually activated.
-- **Dynamic Pixel Addition**: Easily add white pixels to the grid by specifying coordinates in the code.
-- **Grid Visualization**: A grid overlay is drawn for reference, making it easy to see individual pixels.
+# Installation
 
-## Project Structure
+    Clone the repository: git clone https://github.com/yourusername/your-repo-name.git cd your-repo-name
 
-- **screen.cpp**: Contains all screen initialization, rendering, and coordinate management functions.
-- **main.cpp**: Serves as the main entry point, where coordinates are added and the main event loop is run.
+    Install SDL2:
 
-## Requirements
+        On Linux: sudo apt-get install libsdl2-dev
 
-- C++11 or later
-- [SDL2](https://www.libsdl.org/download-2.0.php)
+        On macOS (using Homebrew): brew install sdl2
 
-## Installation
+        On Windows: Download the SDL2 development library from the SDL website and follow the setup instructions.
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/EchoedRGB/Echo64.git
-   cd Echo64
-   ```
+    Compile the project: g++ main.cpp screen.cpp -o virtual_screen -lSDL2
 
-2. **Install SDL2**: Follow the instructions on the [SDL2 website](https://www.libsdl.org/download-2.0.php) for your platform.
+# Usage
 
-3. **Compile the code**:
-   ```bash
-   g++ -o screen main.cpp -lSDL2
-   ```
+Run the compiled program: ./virtual_screen
 
-## Usage
+The program will create a window displaying the virtual screen. Pixels will be added at the corners, and the screen will clear after one second.
+# Contributing
 
-Run the compiled program:
-```bash
-./screen
-```
+Contributions are welcome! Please open an issue or submit a pull request.
+# License
 
-The program will open a 64x64 virtual grid window where predefined coordinates are highlighted. You can add new coordinates by calling `addCoordinate(x, y)` within `main.cpp`.
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-## Contributing
-
-Feel free to submit issues or pull requests. Contributions are welcome!
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Thanks to the SDL2 community for their incredible work and support.
+You can now copy this text without any formatting issues. If you need further assistance, let me know!
